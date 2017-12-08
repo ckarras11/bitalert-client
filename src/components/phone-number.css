@@ -1,0 +1,13 @@
+.phone-number-container {
+    display: flex;
+    flex-direction: column
+}
+
+label {
+    margin-bottom: 10px;
+    
+}
+
+input {
+    padding: 5px;
+}
