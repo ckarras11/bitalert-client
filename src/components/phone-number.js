@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './phone-number.css'
+import './phone-number.css';
 class PhoneNumber extends Component {
     render() {
         return (
