@@ -4,7 +4,7 @@ class Refresh extends Component {
     render() {
         return (
             <div>
-                <button><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                <button><i className="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
         );
     }
