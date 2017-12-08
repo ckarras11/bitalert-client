@@ -1,0 +1,18 @@
+.info {
+    background-color: rgb(68, 186, 227);
+}
+
+.danger {
+    background-color: rgb(234, 84, 75);   
+}
+
+.success {
+    background-color: rgb(57, 196, 100)
+}
+
+.button {
+    padding: 10px;
+    color: white;
+    width: 100px;
+    margin: 10px;
+}
