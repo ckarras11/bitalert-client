@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import {toggleModal} from '../actions';
 import './button.css';
 
-class Button extends Component {
+export class Button extends Component {
+    showModal(e) {
+        e.preventDefault();
+        this.props.dispatch(toggleModal(this.props.buttonType));
+    }
     render() {
         return (
-            <div>
-                <button className={this.props.buttonType}>{this.props.buttonMessage}</button>
+            <div className="button-container">
+                <button onClick={e => {this.showModal(e)}}className={`${this.props.buttonType} button`}>{this.props.buttonMessage}</button>
             </div>
         );
     }
 }
 
-export default Button;
+export default connect()(Button);
