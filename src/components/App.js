@@ -1,29 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
+import '../_flexboxgrid.css';
 import './App.css';
+import Modal from './modal'
 import Logo from './logo';
 import Button from './button';
-import Refresh from './refresh';
-import PhoneNumber from './phone-number';
 import Footer from './footer';
 import Price from './price';
 import Chart from './chart';
 
-class App extends Component {
-  render() {
+export function App(props) {
+  let modal;
+  if (props.showModal) {
+      modal = <Modal />;
+  }
     return (
-      <div className="App">
+      <section className="App">
+        {modal}
         <Logo />
         <Price />
         <Chart />
-        <Button buttonMessage={'Set New Alert'} buttonType={'info button'} />
-        <Button buttonMessage={'Edit Alerts'} buttonType={'danger button'} />
-        <Button buttonMessage={'Submit'} buttonType={'success button'} />
-        <Refresh />
-        <PhoneNumber />
+        <Button buttonMessage={'Set New Alert'} buttonType={'info'} />
+        <Button buttonMessage={'Edit Alerts'} buttonType={'danger'} />
         <Footer />
-      </div>
+      </section>
     );
   }
-}
 
-export default App;
+const mapStateToProps = state => ({
+  showModal: state.showModal
+});
+
+export default connect(mapStateToProps)(App);
