@@ -2,17 +2,39 @@
     background-color: rgb(68, 186, 227);
 }
 
+.info:hover {
+    background-color: rgb(68, 186, 200);
+    cursor: pointer;
+}
+
 .danger {
     background-color: rgb(234, 84, 75);   
 }
-
-.success {
-    background-color: rgb(57, 196, 100)
+.danger:hover {
+    background-color: rgb(200, 84, 75);
+    cursor: pointer;
 }
-
+.success {
+    background-color: rgb(57, 196, 100);
+}
+.success:hover {
+    background-color: rgb(57, 150, 100);
+    cursor: pointer;
+}
 .button {
     padding: 10px;
     color: white;
-    width: 100px;
     margin: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.button-container {
+    width: 50%;
+}
+@media (min-width:720px) {
+    .button-container {
+        width: 25%;
+    }
 }
