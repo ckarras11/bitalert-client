@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PhoneNumber from './phone-number';
 import Button from './button';
 
-// npm install --save react-rangeslider
 function mapStateToProps(state) {
     return {
         modalTitle: state.modalTitle,
