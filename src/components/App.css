@@ -4,5 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: linear-gradient(rgba(255,255,255,1),rgba(255, 255, 255, 0.712)), url('https://fthmb.tqn.com/Ui-M2LgU0fCOcAkZE_NLarxjFlE=/768x0/filters:no_upscale()/88621482-F-56a693fb5f9b58b7d0e3ad09.jpg');
+  background-size: cover;
 }
 
