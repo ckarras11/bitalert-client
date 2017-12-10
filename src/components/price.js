@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import Refresh from './refresh';
+import { connect } from 'react-redux';
 import './price.css';
+
+
+function mapStateToProps(state) {
+    return {
+        priceHistory: state.priceHistory
+    };
+}
 
 class Price extends Component {
     componentDidMount() {
@@ -12,15 +20,19 @@ class Price extends Component {
                 console.log(res);
             }) */
             console.log('GET PRICE')
+
     }
     render() {
+        let currentPrice = this.props.priceHistory.length - 1
         return (
             <div className="price-container">
-                <h1 className='price'>BTC $17500.99</h1>
+                <h1 className='price'>BTC ${this.props.priceHistory[currentPrice]}</h1>
                 <Refresh />
             </div>
         );
     }
 }
 
-export default Price;
+export default connect(
+    mapStateToProps,
+)(Price);

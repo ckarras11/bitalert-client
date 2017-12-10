@@ -6,7 +6,8 @@ const initialState = {
     showModal: false,
     modalTitle: '',
     alertPrice: 0,
-    modalType: ''
+    modalType: '',
+    priceHistory: [1,2,3,4,566,17500],
 
 }
 
