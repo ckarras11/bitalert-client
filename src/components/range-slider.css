@@ -1,0 +1,11 @@
+.slider {
+    width: 75%
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+    background-color: rgb(68, 186, 227);
+}
+
+.rangeslider-horizontal .rangeslider__handle {
+    content: none;
+}

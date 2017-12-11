@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import PhoneNumber from './phone-number';
 import Button from './button';
+import Horizontal from './range-slider';
 
 function mapStateToProps(state) {
     return {
@@ -14,7 +15,7 @@ function mapStateToProps(state) {
 export function ModalContent(props) {
     let modalContent
     if (props.modalType === 'info') {
-        modalContent = <h3>PRICESLIDER</h3>
+        modalContent = <Horizontal />
     } else if (props.modalType === 'danger'){
         modalContent = <h3>ALERTS TO DELETE</h3>
     }
