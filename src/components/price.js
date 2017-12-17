@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Refresh from './refresh';
 import { connect } from 'react-redux';
+import { getPrice } from '../actions';
 import './price.css';
 
 
@@ -12,16 +13,9 @@ function mapStateToProps(state) {
 
 class Price extends Component {
     componentDidMount() {
-        this.getPrice();
+        this.props.dispatch(getPrice());
     }
-    getPrice () {
-        /* fetch('https://api.coinbase.com/v2/prices/spot?currency=USD')
-            .then(res => {
-                console.log(res);
-            }) */
-            console.log('GET PRICE')
 
-    }
     render() {
         let currentPrice = this.props.priceHistory.length - 1
         return (
