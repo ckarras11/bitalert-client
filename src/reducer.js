@@ -1,5 +1,6 @@
 import {
     TOGGLE_MODAL,
+    GET_PRICE,
 } from './actions'
 
 const initialState = {
@@ -7,7 +8,7 @@ const initialState = {
     modalTitle: '',
     alertPrice: 0,
     modalType: '',
-    priceHistory: [1,2,3,4,566,17500],
+    priceHistory: [],
 
 }
 
@@ -38,6 +39,9 @@ export default (state, action) => {
         }
         console.log(state)
         return state;
+    }
+    if(action.type === GET_PRICE) {
+        console.log('get price');
     }
     return state
 }

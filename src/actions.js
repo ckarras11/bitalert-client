@@ -4,3 +4,8 @@ export const toggleModal = (modalContent, alertPrice) => ({
     modalContent,
     alertPrice,
 })
+
+export const GET_PRICE = 'GET_PRICE';
+export const getPrice = () => ({
+    type: GET_PRICE,
+})
