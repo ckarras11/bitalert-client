@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import '../_flexboxgrid.css';
 import './App.css';
 import Modal from './modal'
 import Logo from './logo';
