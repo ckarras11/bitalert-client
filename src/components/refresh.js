@@ -4,7 +4,7 @@ class Refresh extends Component {
     render() {
         return (
             <div className="refresh-container">
-                <button className="refresh"><i className="fa fa-refresh" aria-hidden="true"></i></button>
+                <button onClick={e => console.log('refresh')}className="refresh"><i className="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
         );
     }
