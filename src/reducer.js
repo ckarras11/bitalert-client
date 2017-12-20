@@ -3,6 +3,8 @@ import {
     GET_PRICE,
 } from './actions'
 
+import { API_BASE_URL } from './config';
+
 const initialState = {
     showModal: false,
     modalTitle: '',
@@ -37,11 +39,26 @@ export default (state, action) => {
             state = Object.assign({}, initialState, {
             });
         }
-        console.log(state)
+        console.log(state);
         return state;
     }
     if(action.type === GET_PRICE) {
-        console.log('get price');
+        let priceArray = []
+            fetch(`${API_BASE_URL}/api/price`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
+            .then((res) => {
+                return res.json()
+            })
+            .then((res) => {
+                res.forEach((price) => priceArray.push(price))
+            })
+            .then(() => {
+                state = Object.assign({}, state, {
+                    priceHistory: priceArray,
+                });
+                return state 
+            })
+        
     }
-    return state
+   return state;
+    
 }
