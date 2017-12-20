@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PhoneNumber from './phone-number';
 import Button from './button';
 import Horizontal from './range-slider';
+import Alert from './alert'
 
 function mapStateToProps(state) {
     return {
@@ -17,7 +18,7 @@ export function ModalContent(props) {
     if (props.modalType === 'info') {
         modalContent = <Horizontal />
     } else if (props.modalType === 'danger'){
-        modalContent = <h3>ALERTS TO DELETE</h3>
+        modalContent = <Alert />
     }
         return (
             <div className="modal-content">
