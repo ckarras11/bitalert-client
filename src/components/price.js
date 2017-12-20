@@ -6,24 +6,36 @@ import './price.css';
 
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
-        priceHistory: state.priceHistory
+        priceHistory: state.priceHistory,
     };
 }
 
 class Price extends Component {
-    componentDidMount() {
+
+    componentWillMount() {
         this.props.dispatch(getPrice());
+    }
+    getCurrentPrice(e) {
+        e.preventDefault();
+        this.props.dispatch(getPrice());
+    }
+    componentWillUpdate() {
+        console.log(this.props.priceHistory.length)
     }
 
     render() {
-        let currentPrice = this.props.priceHistory.length - 1
+        console.log(this.props.priceHistory)
+        console.log(this.props.priceHistory.length)
+
         return (
             <div className="price-container">
-                <h1 className='price'>BTC ${this.props.priceHistory[currentPrice]}</h1>
-                <Refresh />
+                <h1 className='price'>BTC ${this.props.priceHistory}</h1>
+                <Refresh onClick={e => { this.getCurrentPrice(e) }} />
             </div>
         );
+
     }
 }
 
