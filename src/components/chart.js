@@ -5,7 +5,6 @@ import { LineChart } from 'react-easy-chart';
 
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         priceHistory: state.priceHistory
     };
