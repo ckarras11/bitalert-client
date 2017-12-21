@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Refresh from './refresh';
 import { connect } from 'react-redux';
-import { getPrice } from '../actions';
+import { fetchPrice } from '../actions';
 import './price.css';
 
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         priceHistory: state.priceHistory,
     };
@@ -14,25 +13,24 @@ function mapStateToProps(state) {
 
 class Price extends Component {
 
-    componentWillMount() {
-        this.props.dispatch(getPrice());
+    componentDidMount() {
+        this.props.dispatch(fetchPrice());
     }
     getCurrentPrice(e) {
         e.preventDefault();
-        this.props.dispatch(getPrice());
-    }
-    componentWillUpdate() {
-        console.log(this.props.priceHistory.length)
+        this.props.dispatch(fetchPrice());
     }
 
     render() {
-        console.log(this.props.priceHistory)
-        console.log(this.props.priceHistory.length)
-
+        let currentPrice;
+        if(this.props.priceHistory && this.props.priceHistory.length > 0) {
+            let index = this.props.priceHistory.length - 1;
+            currentPrice = this.props.priceHistory[index].price
+        }
         return (
             <div className="price-container">
-                <h1 className='price'>BTC ${this.props.priceHistory}</h1>
-                <Refresh onClick={e => { this.getCurrentPrice(e) }} />
+                <h1 className='price'>BTC ${currentPrice}</h1>
+                <Refresh handlingMethod={e => { this.getCurrentPrice(e) }} />
             </div>
         );
 
