@@ -15,12 +15,10 @@ class Chart extends Component {
     render() {
         let data = []
         if(this.props.priceHistory && this.props.priceHistory.length > 0) {
-            console.log(this.props.priceHistory)
             this.props.priceHistory.forEach(price => {
                 data.push({x: price.timestamp, y: price.price})
             })
         }
-        console.log(data)
         return (
             <LineChart
             xType={'time'}
