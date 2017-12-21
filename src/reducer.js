@@ -1,9 +1,8 @@
 import {
     TOGGLE_MODAL,
-    GET_PRICE,
+    FETCH_PRICE_SUCCESS,
 } from './actions'
 
-import { API_BASE_URL } from './config';
 
 const initialState = {
     showModal: false,
@@ -42,22 +41,11 @@ export default (state, action) => {
         console.log(state);
         return state;
     }
-    if(action.type === GET_PRICE) {
-        let priceArray = []
-            fetch(`${API_BASE_URL}/api/price`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
-            .then((res) => {
-                return res.json()
-            })
-            .then((res) => {
-                res.forEach((price) => priceArray.push(price))
-            })
-            .then(() => {
-                state = Object.assign({}, state, {
-                    priceHistory: priceArray,
-                });
-                return state 
-            })
-        
+    if(action.type === FETCH_PRICE_SUCCESS) {
+        state = Object.assign({}, initialState, {
+            priceHistory: action.res
+        })
+        return state;
     }
    return state;
     
