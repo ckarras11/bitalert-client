@@ -1,7 +1,8 @@
 import {
     TOGGLE_MODAL,
-    GET_PRICE,
+    FETCH_PRICE_SUCCESS,
 } from './actions'
+
 
 const initialState = {
     showModal: false,
@@ -37,11 +38,15 @@ export default (state, action) => {
             state = Object.assign({}, initialState, {
             });
         }
-        console.log(state)
+        console.log(state);
         return state;
     }
-    if(action.type === GET_PRICE) {
-        console.log('get price');
+    if(action.type === FETCH_PRICE_SUCCESS) {
+        state = Object.assign({}, initialState, {
+            priceHistory: action.res
+        })
+        return state;
     }
-    return state
+   return state;
+    
 }

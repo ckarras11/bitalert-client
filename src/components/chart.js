@@ -1,14 +1,47 @@
 import React, { Component } from 'react';
 import './chart.css';
+import { connect } from 'react-redux';
+import { LineChart } from 'react-easy-chart';
+
+
+function mapStateToProps(state) {
+    return {
+        priceHistory: state.priceHistory
+    };
+}
 
 class Chart extends Component {
     render() {
+        let data = []
+        if(this.props.priceHistory && this.props.priceHistory.length > 0) {
+            this.props.priceHistory.forEach(price => {
+                data.push({x: price.timestamp, y: price.price})
+            })
+        }
         return (
-            <div className='chart'>
-                <p>Chart</p>
-            </div>
+            <LineChart
+            xType={'time'}
+            datePattern={"%Y-%m-%dT%H:%M:%S.%LZ"}
+            axes
+            axisLabels={{x: 'Timestamp', y: 'Price'}}
+            tickTimeDisplayFormat={"%H:%M"}
+            /* grid
+            verticalGrid */
+            xTicks={5}
+            yTicks={5}
+            /* xDomainRange={[0, 100]}
+            yDomainRange={[0, 100]} */
+            lineColors={['red']}
+            width={350}
+            height={250}
+            data={[
+              data
+            ]}
+          />
         );
     }
 }
 
-export default Chart;
+export default connect(
+    mapStateToProps,
+)(Chart);
