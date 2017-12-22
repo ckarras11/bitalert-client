@@ -18,6 +18,7 @@ class Chart extends Component {
                 data.push({x: price.timestamp, y: price.price})
             })
         }
+        
         return (
             <LineChart
             xType={'time'}

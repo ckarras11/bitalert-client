@@ -35,7 +35,8 @@ export default (state, action) => {
                 alertPrice: action.alertPrice,
             });
         } else {
-            state = Object.assign({}, initialState, {
+            state = Object.assign({}, state, {
+                showModal: false
             });
         }
         console.log(state);
