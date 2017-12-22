@@ -22,8 +22,24 @@ export function fetchPrice () {
             return res.json()
         })
         .then((json) => {
+            json.sort(function(a,b) {
+                return a.timestamp-b.timestamp
+            })
             dispatch(fetchPriceSuccess(json))
         })
 
+    }
+}
+
+export function fetchAlert() {
+    return function () {
+        return fetch(`${API_BASE_URL}/api/alerts`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
+        .then((res) => {
+            return res.json()
+        })
+        .then((json) => {
+            console.log(json)
+            //dispatch(fetchAlertSuccess())
+        })
     }
 }
