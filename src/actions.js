@@ -23,7 +23,7 @@ export function fetchPrice () {
         })
         .then((json) => {
             json.sort(function(a,b) {
-                return a.timestamp-b.timestamp
+                return new Date(a.timestamp) - new Date(b.timestamp)
             })
             dispatch(fetchPriceSuccess(json))
         })
