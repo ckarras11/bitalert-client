@@ -15,6 +15,18 @@ export const fetchPriceSuccess = (res) => ({
     
 })
 
+export const FETCH_ALERT_SUCCESS = 'FETCH_ALERT_SUCCESS';
+export const fetchAlertSuccess = (res) => ({
+    type: FETCH_ALERT_SUCCESS,
+    res
+})
+
+export const SET_PHONENUMBER = 'SET_PHONENUMBER';
+export const setPhonenumber = (phoneNumber) => ({
+    type: SET_PHONENUMBER,
+    phoneNumber
+})
+
 export function fetchPrice () {
     return function (dispatch) {
         return fetch(`${API_BASE_URL}/api/price`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
@@ -31,15 +43,14 @@ export function fetchPrice () {
     }
 }
 
-export function fetchAlert() {
-    return function () {
-        return fetch(`${API_BASE_URL}/api/alerts`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
+export function fetchAlert(phoneNumber) {
+    return function (dispatch) {
+        return fetch(`${API_BASE_URL}/api/alerts/${phoneNumber}`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
         .then((res) => {
             return res.json()
         })
         .then((json) => {
-            console.log(json)
-            //dispatch(fetchAlertSuccess())
+            dispatch(fetchAlertSuccess(json))
         })
     }
 }

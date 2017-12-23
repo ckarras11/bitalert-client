@@ -1,15 +1,18 @@
 import {
     TOGGLE_MODAL,
     FETCH_PRICE_SUCCESS,
+    FETCH_ALERT_SUCCESS,
+    SET_PHONENUMBER
 } from './actions'
 
 
 const initialState = {
     showModal: false,
     modalTitle: '',
-    alertPrice: 0,
+    alerts: [],
     modalType: '',
     priceHistory: [],
+    phoneNumber: 0
 
 }
 
@@ -29,24 +32,30 @@ export default (state, action) => {
                 modalTitle: 'Edit Alerts',
                 modalType: 'danger',
             });
-        } else if (action.modalContent === 'success') {
-            state = Object.assign({}, state, {
-                showModal: !state.showModal,
-                alertPrice: action.alertPrice,
-            });
         } else {
             state = Object.assign({}, state, {
-                showModal: false
+                showModal: false,
+                alerts: [],
+                phoneNumber: 0
             });
         }
-        console.log(state);
         return state;
     }
     if(action.type === FETCH_PRICE_SUCCESS) {
-        state = Object.assign({}, initialState, {
+        state = Object.assign({}, state, {
             priceHistory: action.res
         })
         return state;
+    }
+    if(action.type === FETCH_ALERT_SUCCESS) {
+        state = Object.assign({}, state, {
+            alerts: action.res
+        })
+    }
+    if(action.type === SET_PHONENUMBER) {
+        state = Object.assign({}, state, {
+            phoneNumber: action.phoneNumber
+        })
     }
    return state;
     
