@@ -27,6 +27,30 @@ export const setPhonenumber = (phoneNumber) => ({
     phoneNumber
 })
 
+export const SET_ALERT_PRICE = 'SET_ALERT_PRICE';
+export const setAlertPrice = (alertPrice) => ({
+    type: SET_ALERT_PRICE,
+    alertPrice
+})
+
+export const CREATE_ALERT_SUCCESS = 'CREATE_ALERT_SUCCESS';
+export const createAlertSuccess = (res) => ({
+    type: CREATE_ALERT_SUCCESS,
+    res
+})
+
+export function createAlert(phoneNumber, alertPrice) {
+    return function (dispatch) {
+        return fetch(`${API_BASE_URL}/api/alerts`, {method: 'POST', mode: 'cors', body: JSON.stringify({phoneNumber, alert: {price: alertPrice}}), headers: {Accept: 'application/json', 'Content-Type': 'application/json'}})
+        .then((res) => {
+            return res.json()
+        })
+        .then((json) => {
+            dispatch(createAlertSuccess(json))
+        })
+    }
+}
+
 export function fetchPrice () {
     return function (dispatch) {
         return fetch(`${API_BASE_URL}/api/price`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
