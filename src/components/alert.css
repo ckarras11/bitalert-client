@@ -11,4 +11,16 @@
     border: solid black 1px;
     border-radius: 5px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert-title {
+    text-align: center;
+}
+
+.alert-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

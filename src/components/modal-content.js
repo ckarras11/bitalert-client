@@ -24,8 +24,12 @@ export class ModalContent extends React.Component {
     }
 
     submitEditHandler() {
-        this.props.dispatch(fetchAlert(this.props.phoneNumber));
-        
+        const number = this.props.phoneNumber.replace(/\D/g,'')
+        if(number === '') {
+            alert('Please enter a valid phone number')
+        } else {
+            this.props.dispatch(fetchAlert(number));
+        }
     }
     submitCreateHandler() {
         const number = this.props.phoneNumber.replace(/\D/g,'')

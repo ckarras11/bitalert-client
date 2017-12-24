@@ -51,6 +51,15 @@ export function createAlert(phoneNumber, alertPrice) {
     }
 }
 
+export function removeAlert(id, number) {
+    return function (dispatch) {
+        return fetch(`${API_BASE_URL}/api/alerts/${id}`, {method: 'DELETE', mode: 'cors', headers: {Accept: 'application/json'}})
+        .then((res) => {  
+            dispatch(fetchAlert(number))
+        })
+    }
+}
+
 export function fetchPrice () {
     return function (dispatch) {
         return fetch(`${API_BASE_URL}/api/price`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
