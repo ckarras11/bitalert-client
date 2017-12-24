@@ -9,3 +9,16 @@
 .rangeslider-horizontal .rangeslider__handle {
     content: none;
 }
+
+.rangeslider-horizontal .rangeslider__handle {
+    width: 10px;
+}
+
+.rangeslider-horizontal .rangeslider__handle:after {
+    content: none;
+}
+
+.value {
+    text-align: center;
+    margin-bottom: 10px;
+}
