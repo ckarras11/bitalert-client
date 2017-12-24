@@ -1,36 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import Slider from 'react-rangeslider';
 import './range-slider.css';
+import {setAlertPrice} from '../actions'
 
-class Horizontal extends Component {
-  constructor (props, context) {
-    super(props, context)
-    this.state = {
-      value: 10
-    }
-  }
-
-  handleChangeStart = () => {
-    console.log('Change event started')
+function mapStateToProps(state) {
+  return {
+    priceHistory: state.priceHistory,
+    alertPrice: state.alertPrice
   };
+}
+
+class Horizontal extends React.Component {
+
+  /* handleChangeStart = () => {
+    console.log('Change event started')
+  }; */
 
   handleChange = value => {
-    this.setState({
-      value: value
-    })
+    this.props.dispatch(setAlertPrice(value))
   };
 
-  handleChangeComplete = () => {
+  /* handleChangeComplete = () => {
     console.log('Change event completed')
-  };
+  }; */
 
-  render () {
-    const { value } = this.state
+  render() {
+    let value = this.props.alertPrice
     return (
       <div className='slider'>
         <Slider
           min={0}
-          max={100}
+          max={this.props.priceHistory[this.props.priceHistory.length -1].price * 2}
           value={value}
           onChangeStart={this.handleChangeStart}
           onChange={this.handleChange}
@@ -42,4 +43,6 @@ class Horizontal extends Component {
   }
 }
 
-export default Horizontal
+export default connect(
+  mapStateToProps,
+)(Horizontal);
