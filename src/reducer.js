@@ -72,7 +72,8 @@ export default (state, action) => {
     if(action.type === CREATE_ALERT_SUCCESS) {
         alert(`Alert set for ${action.res.alert.price}`)
         state = Object.assign({}, state, {
-            showModal: false
+            showModal: false,
+            phoneNumber: ''
         })
     }
    return state;  
