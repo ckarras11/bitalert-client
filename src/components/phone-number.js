@@ -3,13 +3,8 @@ import { connect } from 'react-redux';
 import './phone-number.css';
 import { setPhonenumber } from '../actions';
 
-function mapStateToProps(state) {
-    return {
 
-    }
-}
-
-class PhoneNumber extends Component {
+export class PhoneNumber extends Component {
 
     setNumber(e) {
         e.preventDefault();
@@ -26,6 +21,4 @@ class PhoneNumber extends Component {
     }
 }
 
-export default connect(
-    mapStateToProps,
-)(PhoneNumber);
+export default connect()(PhoneNumber);
