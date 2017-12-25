@@ -15,7 +15,7 @@ export class Alert extends React.Component {
     render() {
         return (
             <div className="alert">
-                <h1 className="alert-price">{this.props.price}</h1>
+                <h1 className="alert-price">${this.props.price}</h1>
                 <span id={this.props.alertId} number={this.props.number} onClick={e => this.handleRemove(e)} className="close">&times;</span>
             </div>
         );
