@@ -7,7 +7,8 @@ import Button from './button';
 import Footer from './footer';
 import Price from './price';
 import Chart from './chart';
-import Spinner from 'react-spinkit';
+import Loader from './loader';
+
 
 export function App(props) {
   let modal;
@@ -16,7 +17,7 @@ export function App(props) {
       modal = <Modal />;
   }
   if(props.isLoading) {
-    chart = <Spinner name="circle"/>
+    chart = <Loader />
   } else if (props.isLoading === false) {
     chart = <Chart />
   }
