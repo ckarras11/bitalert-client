@@ -14,7 +14,7 @@ There are 5 cron jobs that run constantly.
 ## Landing Page
 Bit alert is a single page app.  When the page initially loads a loading wheel appears.  When the data for the current market price is fetch the loading wheel disappears and the chart is displayed.
 
-![image](<img width="1438" alt="screen shot 2017-12-26 at 1 20 47 pm" src="https://user-images.githubusercontent.com/30561347/34362282-2c9342c6-ea40-11e7-8ea3-03c806a011fb.png">)
+[image](<img width="1438" alt="screen shot 2017-12-26 at 1 20 47 pm" src="https://user-images.githubusercontent.com/30561347/34362282-2c9342c6-ea40-11e7-8ea3-03c806a011fb.png">)
 
 ## Create Alert
 
