@@ -14,6 +14,11 @@ export const fetchPriceSuccess = (res) => ({
     res
     
 })
+export const FETCH_PRICE_INITIATED = 'FETCH_PRICE_INITIATED';
+export const fetchPriceInitiated = () => ({
+    type: FETCH_PRICE_INITIATED,
+    
+})
 
 export const FETCH_ALERT_SUCCESS = 'FETCH_ALERT_SUCCESS';
 export const fetchAlertSuccess = (res) => ({
@@ -62,6 +67,7 @@ export function removeAlert(id, number) {
 
 export function fetchPrice () {
     return function (dispatch) {
+        dispatch(fetchPriceInitiated())
         return fetch(`${API_BASE_URL}/api/price`, {method: 'GET', mode: 'cors', headers: {Accept: 'application/json'}})
         .then((res) => {
             return res.json()

@@ -4,7 +4,8 @@ import {
     FETCH_ALERT_SUCCESS,
     CREATE_ALERT_SUCCESS,
     SET_PHONENUMBER,
-    SET_ALERT_PRICE
+    SET_ALERT_PRICE,
+    FETCH_PRICE_INITIATED
 } from './actions'
 
 
@@ -16,6 +17,7 @@ const initialState = {
     priceHistory: [],
     phoneNumber: '',
     alertPrice: 0,
+    isLoading: false
 
 }
 
@@ -45,9 +47,18 @@ export default (state, action) => {
         }
         return state;
     }
-    if(action.type === FETCH_PRICE_SUCCESS) {
+    if(action.type === FETCH_PRICE_INITIATED) {
+        console.log('Loading Price')
         state = Object.assign({}, state, {
-            priceHistory: action.res
+            isLoading: true,
+        })
+        return state;
+    }
+    if(action.type === FETCH_PRICE_SUCCESS) {
+        console.log('Price Loaded')
+        state = Object.assign({}, state, {
+            priceHistory: action.res,
+            isLoading: false,
         })
         return state;
     }
