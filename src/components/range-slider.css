@@ -3,7 +3,8 @@
 }
 
 .rangeslider-horizontal .rangeslider__fill {
-    background-color: rgb(68, 186, 227);
+    /* background-color: rgb(68, 186, 227); */
+    background-image: linear-gradient(to right, #1e3c72 0%, #2a5298 51%, #1e3c72 100%)
 }
 
 .rangeslider-horizontal .rangeslider__handle {
