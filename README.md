@@ -39,4 +39,4 @@ Bit alert is a single page app.  When the page initially loads a loading wheel a
 ## Responsive Design
 This page was made responsive using ``flexbox`` and ``@media querys``
 
-![image]()
+![image](https://user-images.githubusercontent.com/30561347/34362476-ebab6dea-ea41-11e7-8b71-d8afb4f576c4.png)
