@@ -15,7 +15,7 @@ There are 5 cron jobs that run constantly.
 Bit alert is a single page app.  When the page initially loads a loading wheel appears.  When the data for the current market price is fetch the loading wheel disappears and the chart is displayed.
 
 ![image](https://user-images.githubusercontent.com/30561347/34362282-2c9342c6-ea40-11e7-8ea3-03c806a011fb.png)
-
+![image](https://user-images.githubusercontent.com/30561347/34362433-8983b58c-ea41-11e7-8b77-0115321214ce.png)
 ## Create Alert
 
 ## Edit Alert
