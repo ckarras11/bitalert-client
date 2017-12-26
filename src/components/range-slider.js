@@ -37,7 +37,7 @@ class Horizontal extends React.Component {
           onChange={this.handleChange}
           onChangeComplete={this.handleChangeComplete}
         />
-        <div className='value'>{value}</div>
+        <div className='value'>${value}</div>
       </div>
     )
   }
