@@ -1,31 +1,38 @@
   import { API_BASE_URL } from './config';
 
-
+// Toggles the modal on and off, also determines the modal to display
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const toggleModal = (modalContent, alertPrice) => ({
     type: TOGGLE_MODAL,
     modalContent,
     alertPrice,
 })
-
+// Runs when there is a succesful call to the database to get the current price
+// Turns off the loading wheel
 export const FETCH_PRICE_SUCCESS = 'FETCH_PRICE_SUCCESS';
 export const fetchPriceSuccess = (res) => ({
     type: FETCH_PRICE_SUCCESS,
     res
     
 })
+// Initiates the loading wheel while the database is being queried for the current price
 export const FETCH_PRICE_INITIATED = 'FETCH_PRICE_INITIATED';
 export const fetchPriceInitiated = () => ({
     type: FETCH_PRICE_INITIATED,
     
 })
-
+// Runs when there is a succesful call to the db for alerts
 export const FETCH_ALERT_SUCCESS = 'FETCH_ALERT_SUCCESS';
 export const fetchAlertSuccess = (res) => ({
     type: FETCH_ALERT_SUCCESS,
     res
 })
 
+export const FETCH_ALERT_EMPTY = 'FETCH_ALERT_EMPTY';
+export const fetchAlertEmpty = () => ({
+    type: FETCH_ALERT_EMPTY,
+})
+// Sets the state for
 export const SET_PHONENUMBER = 'SET_PHONENUMBER';
 export const setPhonenumber = (phoneNumber) => ({
     type: SET_PHONENUMBER,
@@ -89,7 +96,12 @@ export function fetchAlert(phoneNumber) {
             return res.json()
         })
         .then((json) => {
-            dispatch(fetchAlertSuccess(json))
+            if(json.length === 0) {
+                dispatch(fetchAlertEmpty())
+            } else {
+                dispatch(fetchAlertSuccess(json))
+            }
+            
         })
     }
 }
