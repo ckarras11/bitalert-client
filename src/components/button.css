@@ -32,6 +32,7 @@
     margin-bottom: 10px;
     width: 100%;
     border-radius: 5px;
+    outline: none
 }
 .button-container {
     width: 50%;
