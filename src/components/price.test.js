@@ -6,5 +6,5 @@ import { Price } from './price';
 describe('<Price />', () => {
     it('Renders without crashing', () => {
         /* shallow(<Price />); */
-    })
-})
+    });
+});

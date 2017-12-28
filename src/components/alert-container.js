@@ -1,29 +1,28 @@
 import React from 'react';
 import './alert.css';
-import Alert from './alert'
+import Alert from './alert';
 import { connect } from 'react-redux';
 
 
 function mapStateToProps(state) {
     return {
         alerts: state.alerts,
-        serverMessage: state.serverMessage
+        serverMessage: state.serverMessage,
     };
 }
 
 export class AlertContainer extends React.Component {
-    
     render() {
         let message;
-        if(this.props.serverMessage) {
-            message = <h1 className="error-msg">{this.props.serverMessage}</h1>
+        if (this.props.serverMessage) {
+            message = <h1 className='error-msg'>{this.props.serverMessage}</h1>;
         }
         const userAlerts = this.props.alerts.map((alert, index) => {
-            return  <li key={index}><Alert number={alert.phoneNumber} price={alert.alert.price} alertId={alert.id}/></li> 
-        })
+            return <li key={index}><Alert number={alert.phoneNumber} price={alert.alert.price} alertId={alert.id} /></li>;
+        });
         return (
-            <div className="alert-container">
-                <h1 className="alert-title">Alerts</h1>
+            <div className='alert-container'>
+                <h1 className='alert-title'>Alerts</h1>
                 <ul>
                     {userAlerts}
                     {message}
@@ -33,6 +32,4 @@ export class AlertContainer extends React.Component {
     }
 }
 
-export default connect(
-    mapStateToProps,
-)(AlertContainer);
+export default connect(mapStateToProps)(AlertContainer);

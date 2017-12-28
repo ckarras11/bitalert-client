@@ -6,5 +6,5 @@ import { ModalContent } from './modal-content';
 describe('<ModalContent />', () => {
     it('Renders without crashing', () => {
         shallow(<ModalContent />);
-    })
+    });
 });

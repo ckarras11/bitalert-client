@@ -6,13 +6,13 @@ import { PhoneNumber } from './phone-number';
 describe('<PhoneNumber />', () => {
     it('Renders without crashing', () => {
         shallow(<PhoneNumber />);
-    })
+    });
     it('Should fire the setNumber callback when changed', () => {
         const dispatch = jest.fn();
-        const wrapper = mount(<PhoneNumber dispatch={dispatch}/>);
+        const wrapper = mount(<PhoneNumber dispatch={dispatch} />);
         wrapper.find('input').simulate('change', {
-            preventDefault() {}
+            preventDefault() { },
         });
-        expect(dispatch).toHaveBeenCalledWith({phoneNumber: '', type: 'SET_PHONENUMBER'});
-    })
-})
+        expect(dispatch).toHaveBeenCalledWith({ phoneNumber: '', type: 'SET_PHONENUMBER' });
+    });
+});

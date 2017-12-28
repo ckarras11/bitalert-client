@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAlert, createAlert} from '../actions';
+import { fetchAlert, createAlert } from '../actions';
 import PhoneNumber from './phone-number';
 import Horizontal from './range-slider';
 import AlertContainer from './alert-container';
@@ -24,48 +24,45 @@ export class ModalContent extends React.Component {
     }
 
     submitEditHandler() {
-        const number = this.props.phoneNumber.replace(/\D/g,'')
-        if(number === '') {
-            alert('Please enter a valid phone number')
+        const number = this.props.phoneNumber.replace(/\D/g, '');
+        if (number === '') {
+            alert('Please enter a valid phone number');
         } else {
             this.props.dispatch(fetchAlert(number));
         }
     }
     submitCreateHandler() {
-        const number = this.props.phoneNumber.replace(/\D/g,'')
-        if(number === '') {
-            alert('Please enter a valid phone number')
+        const number = this.props.phoneNumber.replace(/\D/g, '');
+        if (number === '') {
+            alert('Please enter a valid phone number');
         } else {
             this.props.dispatch(createAlert(number, this.props.alertPrice));
         }
     }
 
     render() {
-        let modalContent
+        let modalContent;
         if (this.props.modalType === 'info') {
-            modalContent = <div className="width-100">
+            modalContent =  <div className='width-100'>
                                 <Horizontal />
                                 <Submit action={this.submitCreateHandler} />
-                            </div>
+                            </div>;
         } else if (this.props.modalType === 'danger') {
-            modalContent =  <div className="width-100">
+            modalContent =  <div className='width-100'>
                                 <AlertContainer />
                                 <Submit action={this.submitEditHandler} />
-                            </div>
+                            </div>;
         }
         return (
-            <div className="modal-content">
-                <h2 className="modal-title">{this.props.modalTitle}</h2>
+            <div className='modal-content'>
+                <h2 className='modal-title'>{this.props.modalTitle}</h2>
                 <hr />
                 <PhoneNumber />
                 {modalContent}
-                
             </div>
         );
     }
 
 }
 
-export default connect(
-    mapStateToProps,
-)(ModalContent);
+export default connect(mapStateToProps)(ModalContent);

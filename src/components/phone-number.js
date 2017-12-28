@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import './phone-number.css';
 import { setPhonenumber } from '../actions';
 
 
-export class PhoneNumber extends Component {
+export class PhoneNumber extends React.Component {
 
     setNumber(e) {
         e.preventDefault();
-        this.props.dispatch(setPhonenumber(e.target.value))
+        this.props.dispatch(setPhonenumber(e.target.value));
     }
 
     render() {

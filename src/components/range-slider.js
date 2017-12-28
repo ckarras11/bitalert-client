@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Slider from 'react-rangeslider';
 import './range-slider.css';
-import {setAlertPrice} from '../actions'
+import { setAlertPrice } from '../actions'
 
 function mapStateToProps(state) {
   return {
@@ -23,7 +23,7 @@ export class Horizontal extends React.Component {
       <div className='slider'>
         <Slider
           min={0}
-          max={this.props.priceHistory[this.props.priceHistory.length -1].price * 2}
+          max={this.props.priceHistory[this.props.priceHistory.length - 1].price * 2}
           value={value}
           onChangeStart={this.handleChangeStart}
           onChange={this.handleChange}
@@ -35,6 +35,4 @@ export class Horizontal extends React.Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-)(Horizontal);
+export default connect(mapStateToProps)(Horizontal);
