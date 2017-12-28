@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {shallow, mount} from 'enzyme';
-import Chart from './chart';
+import Loader from './loader';
 
-describe('<Chart />', () => {
+describe('<Loader />', () => {
     it('Renders without crashing', () => {
-        /* shallow(<Chart />); */
+        shallow(<Loader />);
     })
 })
