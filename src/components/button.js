@@ -16,13 +16,13 @@ export class Button extends Component {
         if(this.props.isLoading) {
             return (
                 <div className="button-container">
-                    <button disabled onClick={e => {this.showModal(e)}}className={`${this.props.buttonType} button`}>{this.props.buttonMessage}</button>
+                    <button disabled onClick={e => {this.showModal(e)}} className={`${this.props.buttonType} button`}>{this.props.buttonMessage}</button>
                 </div>
             );
         } else {
             return (
                 <div className="button-container">
-                    <button onClick={e => {this.showModal(e)}}className={`${this.props.buttonType} button`}>{this.props.buttonMessage}</button>
+                    <button onClick={e => {this.showModal(e)}} className={`${this.props.buttonType} button`}>{this.props.buttonMessage}</button>
                 </div>
             );
         }
