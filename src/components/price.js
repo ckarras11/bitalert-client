@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Refresh from './refresh';
 import { connect } from 'react-redux';
 import { fetchPrice } from '../actions';
@@ -11,7 +11,7 @@ function mapStateToProps(state) {
     };
 }
 
-class Price extends Component {
+export class Price extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(fetchPrice());
