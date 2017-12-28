@@ -96,10 +96,16 @@ export function fetchAlert(phoneNumber) {
             return res.json()
         })
         .then((json) => {
-            if(json.length === 0) {
+            let alerts = []
+            json.forEach(alert => {
+                if (alert.alert.removeFlag === false) {
+                    alerts.push(alert);
+                }
+            })
+            if(alerts.length === 0) {
                 dispatch(fetchAlertEmpty())
             } else {
-                dispatch(fetchAlertSuccess(json))
+                dispatch(fetchAlertSuccess(alerts))
             }
             
         })
