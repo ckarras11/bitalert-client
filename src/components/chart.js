@@ -26,12 +26,8 @@ class Chart extends Component {
             axes
             axisLabels={{x: 'Timestamp', y: 'Price'}}
             tickTimeDisplayFormat={"%H:%M"}
-            /* grid
-            verticalGrid */
             xTicks={5}
             yTicks={5}
-            /* xDomainRange={[0, 100]}
-            yDomainRange={[0, 100]} */
             lineColors={['red']}
             width={350}
             height={250}
