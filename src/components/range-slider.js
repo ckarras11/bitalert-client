@@ -11,19 +11,11 @@ function mapStateToProps(state) {
   };
 }
 
-class Horizontal extends React.Component {
-
-  /* handleChangeStart = () => {
-    console.log('Change event started')
-  }; */
+export class Horizontal extends React.Component {
 
   handleChange = value => {
     this.props.dispatch(setAlertPrice(value))
   };
-
-  /* handleChangeComplete = () => {
-    console.log('Change event completed')
-  }; */
 
   render() {
     let value = this.props.alertPrice
