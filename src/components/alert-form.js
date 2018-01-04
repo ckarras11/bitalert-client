@@ -42,30 +42,30 @@ export class AlertForm extends React.Component {
         }
         if (this.props.contactType === 'email') {
             inputType = <div className='input-container'>
-                            <label>Email:</label>
-                            <Field
-                                name="email"
-                                component='input'
-                                type="email"
-                                label="Email"
-                                onChange={e => this.setEmail(e)}
-                                placeholder='bit@alert.com'
-                            />
-                        </div>
+                <label>Email:</label>
+                <Field
+                    name="email"
+                    component='input'
+                    type="email"
+                    label="Email"
+                    onChange={e => this.setEmail(e)}
+                    placeholder='bit@alert.com'
+                />
+            </div>
         }
         if (this.props.contactType === 'phoneNumber') {
             inputType = <div className='input-container'>
-                            <label>Phone Number:</label>
-                            <Field
-                                name="phoneNumber"
-                                type="tel"
-                                component='input'
-                                label="Phone Number"
-                                value={this.props.phoneNumber}
-                                onChange={e => this.setNumber(e)}
-                                placeholder='(999)-999-9999'
-                            />
-                        </div>
+                <label>Phone Number:</label>
+                <Field
+                    name="phoneNumber"
+                    type="tel"
+                    component='input'
+                    label="Phone Number"
+                    value={this.props.phoneNumber}
+                    onChange={e => this.setNumber(e)}
+                    placeholder='(999)-999-9999'
+                />
+            </div>
         }
 
         return (
@@ -98,7 +98,7 @@ export class AlertForm extends React.Component {
                     </div>
                     {inputType}
                     {slider}
-                </div>        
+                </div>
             </form>
         )
     }
