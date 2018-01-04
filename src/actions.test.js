@@ -19,12 +19,16 @@ import {
     fetchAlertEmpty,
     SET_PHONENUMBER,
     setPhonenumber,
+    SET_EMAIL,
+    setEmail,
     SET_ALERT_PRICE,
     setAlertPrice,
     createAlertSuccess,
     CREATE_ALERT_SUCCESS,
     createAlert,
     removeAlert,
+    setContactType,
+    SET_CONTACT_TYPE,
 }
     from './actions';
 
@@ -72,6 +76,22 @@ describe('setPhonenumber', () => {
         const action = setPhonenumber(phoneNumber);
         expect(action.type).toEqual(SET_PHONENUMBER);
         expect(action.phoneNumber).toEqual(phoneNumber);
+    });
+});
+describe('setEmail', () => {
+    it('Should return the action', () => {
+        const email = 'bit@alert.com';
+        const action = setEmail(email);
+        expect(action.type).toEqual(SET_EMAIL);
+        expect(action.email).toEqual(email);
+    });
+});
+describe('setContactType', () => {
+    it('Should return the action', () => {
+        const contactType = 'phoneNumber';
+        const action = setContactType(contactType);
+        expect(action.type).toEqual(SET_CONTACT_TYPE);
+        expect(action.contactType).toEqual(contactType);
     });
 });
 describe('setAlertPrice', () => {

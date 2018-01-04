@@ -44,6 +44,20 @@ export const setPhonenumber = phoneNumber => ({
     phoneNumber,
 });
 
+// Sets the state with the email input
+export const SET_EMAIL = 'SET_EMAIL';
+export const setEmail = email => ({
+    type: SET_EMAIL,
+    email,
+});
+
+// Sets the state with the contact method
+export const SET_CONTACT_TYPE = 'SET_CONTACT_TYPE';
+export const setContactType = contactType => ({
+    type: SET_CONTACT_TYPE,
+    contactType,
+});
+
 // Sets the state with the alert price from the range slider
 export const SET_ALERT_PRICE = 'SET_ALERT_PRICE';
 export const setAlertPrice = alertPrice => ({
