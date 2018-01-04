@@ -72,8 +72,8 @@ export const createAlertSuccess = res => ({
     res,
 });
 
-// Triggered from modal content to create a new alert
-export const createAlert = (phoneNumber, alertPrice) => dispatch => {
+// Triggered from modal content to create a new phone alert
+export const createPhoneAlert = (phoneNumber, alertPrice) => dispatch => {
     return fetch(`${API_BASE_URL}/api/alerts`, {
         method: 'POST',
         mode: 'cors',
@@ -81,59 +81,104 @@ export const createAlert = (phoneNumber, alertPrice) => dispatch => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({phoneNumber, alert: {price: alertPrice}})
+        body: JSON.stringify({ phoneNumber, alert: { price: alertPrice, contactType: 'phoneNumber' } })
     })
-    .then(res => res.json())
-    .then(json => dispatch(createAlertSuccess(json)));
+        .then(res => res.json())
+        .then(json => dispatch(createAlertSuccess(json)));
+}
+
+// Triggered from modal content to create a new email alert
+export const createEmailAlert = (email, alertPrice) => dispatch => {
+    return fetch(`${API_BASE_URL}/api/alerts`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, alert: { price: alertPrice, contactType: 'email' } })
+    })
+        .then(res => res.json())
+        .then(json => dispatch(createAlertSuccess(json)));
 }
 
 // Triggered form alert container to remove alert
-export const removeAlert = (id, number) => dispatch => {
-    return fetch(`${API_BASE_URL}/api/alerts/${id}`, { 
-        method: 'DELETE', 
-        mode: 'cors', 
-        headers: { Accept: 'application/json' } 
+export const removeAlert = (id, number, email, contactType) => dispatch => {
+    return fetch(`${API_BASE_URL}/api/alerts/${id}`, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: { Accept: 'application/json' }
     })
-    .then(res => dispatch(fetchAlert(number)));
+        .then(res => {
+            if (contactType === 'phoneNumber') {
+                dispatch(fetchPhoneAlert(number))
+            } else if (contactType === 'email') {
+                dispatch(fetchEmailAlert(email))
+            }
+        });
+
 }
 
 // Triggered when app loads and when refresh button is clicked
 // Gets current price
 export const fetchPrice = () => dispatch => {
     dispatch(fetchPriceInitiated());
-    return fetch(`${API_BASE_URL}/api/price`, { 
-        method: 'GET', 
-        mode: 'cors', 
-        headers: { Accept: 'application/json' } 
+    return fetch(`${API_BASE_URL}/api/price`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: { Accept: 'application/json' }
     })
-    .then(res => res.json())
-    .then(json => {
-        json.sort(function (a, b) {
-            return new Date(a.timestamp) - new Date(b.timestamp);
+        .then(res => res.json())
+        .then(json => {
+            json.sort(function (a, b) {
+                return new Date(a.timestamp) - new Date(b.timestamp);
+            });
+            dispatch(fetchPriceSuccess(json));
         });
-        dispatch(fetchPriceSuccess(json));
-    });
 }
 
 // Trigged on submit when getting alerts for a phonenumber from modal content
-export const fetchAlert = phoneNumber => dispatch => {
-    return fetch(`${API_BASE_URL}/api/alerts/${phoneNumber}`, { 
-        method: 'GET', 
-        mode: 'cors', 
-        headers: { Accept: 'application/json' } 
+export const fetchPhoneAlert = phoneNumber => dispatch => {
+    return fetch(`${API_BASE_URL}/api/alerts/phone/${phoneNumber}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: { Accept: 'application/json' }
     })
-    .then(res => res.json())
-    .then(json => {
-        const alerts = [];
-        json.forEach((alert) => {
-            if (alert.alert.removeFlag === false) {
-                alerts.push(alert);
+        .then(res => res.json())
+        .then(json => {
+            const alerts = [];
+            json.forEach((alert) => {
+                if (alert.alert.removeFlag === false) {
+                    alerts.push(alert);
+                }
+            });
+            if (alerts.length === 0) {
+                dispatch(fetchAlertEmpty());
+            } else {
+                dispatch(fetchAlertSuccess(alerts));
             }
         });
-        if (alerts.length === 0) {
-            dispatch(fetchAlertEmpty());
-        } else {
-            dispatch(fetchAlertSuccess(alerts));
-        }
-    });
+}
+
+// Trigged on submit when getting alerts for a email from modal content
+export const fetchEmailAlert = email => dispatch => {
+    return fetch(`${API_BASE_URL}/api/alerts/email/${email}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: { Accept: 'application/json' }
+    })
+        .then(res => res.json())
+        .then(json => {
+            const alerts = [];
+            json.forEach((alert) => {
+                if (alert.alert.removeFlag === false) {
+                    alerts.push(alert);
+                }
+            });
+            if (alerts.length === 0) {
+                dispatch(fetchAlertEmpty());
+            } else {
+                dispatch(fetchAlertSuccess(alerts));
+            }
+        });
 }
