@@ -1,8 +1,14 @@
 import thunkMiddleware from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers} from 'redux';
 import reducer from './reducer';
+import {reducer as formReducer} from 'redux-form';
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
+const rootReducer = combineReducers({
+    reducer,
+    form: formReducer,
+})
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export default store;
