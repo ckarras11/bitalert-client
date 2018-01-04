@@ -4,9 +4,11 @@ import {
     FETCH_ALERT_SUCCESS,
     CREATE_ALERT_SUCCESS,
     SET_PHONENUMBER,
+    SET_EMAIL,
     SET_ALERT_PRICE,
     FETCH_PRICE_INITIATED,
     FETCH_ALERT_EMPTY,
+    SET_CONTACT_TYPE,
 } from './actions';
 
 
@@ -17,14 +19,15 @@ const initialState = {
     alerts: [],
     priceHistory: [],
     phoneNumber: '',
+    email: '',
+    contactType: undefined,
     alertPrice: 0,
     isLoading: false,
     serverMessage: undefined,
 
 };
 
-export default (state, action) => {
-    state = state || initialState;
+const reducer = (state = initialState, action) => {
 
     if (action.type === TOGGLE_MODAL) {
         if (action.modalContent === 'info') {
@@ -45,6 +48,8 @@ export default (state, action) => {
                 showModal: false,
                 alerts: [],
                 phoneNumber: '',
+                email: '',
+                contactType: undefined,
                 serverMessage: undefined,
             });
         }
@@ -75,9 +80,21 @@ export default (state, action) => {
             alerts: [],
         });
     }
+    if (action.type === SET_CONTACT_TYPE) {
+        state = Object.assign({}, state, {
+            contactType: action.contactType,
+        });
+        return state;
+    }
     if (action.type === SET_PHONENUMBER) {
         state = Object.assign({}, state, {
             phoneNumber: action.phoneNumber,
+        });
+        return state;
+    }
+    if (action.type === SET_EMAIL) {
+        state = Object.assign({}, state, {
+            email: action.email,
         });
         return state;
     }
@@ -92,7 +109,11 @@ export default (state, action) => {
         state = Object.assign({}, state, {
             showModal: false,
             phoneNumber: '',
+            email: '',
+            contactType: undefined,
         });
     }
     return state;
 };
+
+export default reducer;

@@ -10,6 +10,8 @@ import {
     setPhonenumber,
     setAlertPrice,
     createAlertSuccess,
+    setContactType,
+    setEmail,
 } from './actions';
 
 describe('reducer', () => {
@@ -21,6 +23,8 @@ describe('reducer', () => {
         expect(state.alerts).toEqual([]);
         expect(state.priceHistory).toEqual([]);
         expect(state.phoneNumber).toEqual('');
+        expect(state.email).toEqual('');
+        expect(state.contactType).toEqual(undefined);
         expect(state.alertPrice).toEqual(0);
         expect(state.isLoading).toEqual(false);
         expect(state.serverMessage).toEqual(undefined);
@@ -48,19 +52,23 @@ describe('reducer', () => {
         expect(state.modalType).toEqual('danger');
     });
 
-    it('Should toggle the info modal', () => {
+    it('Should close the modal', () => {
         let state = {
             showModal: false,
             priceHistory: [17000],
             phoneNumber: 1234561234,
             alerts: [15000],
             serverMessage: 'TEST',
+            contactType: 'phoneNumber',
+            email: 'test@test.com'
         };
         state = reducer(state, toggleModal());
         expect(state.showModal).toEqual(false);
         expect(state.alerts).toEqual([]);
         expect(state.phoneNumber).toEqual('');
         expect(state.serverMessage).toEqual(undefined);
+        expect(state.contactType).toEqual(undefined);
+        expect(state.email).toEqual('');
     });
 
     it('Should set loading state to true', () => {
@@ -102,12 +110,28 @@ describe('reducer', () => {
         expect(state.alerts).toEqual([]);
     });
 
+    it('Should set contact type', () => {
+        let state = {
+            contactType: undefined,
+        };
+        state = reducer(state, setContactType('email'));
+        expect(state.contactType).toEqual('email');
+    });
+
     it('Should set phoneNumber', () => {
         let state = {
             phoneNumber: '',
         };
         state = reducer(state, setPhonenumber(1234561234));
         expect(state.phoneNumber).toEqual(1234561234);
+    });
+
+    it('Should set email', () => {
+        let state = {
+            email: '',
+        };
+        state = reducer(state, setEmail('test@test.com'));
+        expect(state.email).toEqual('test@test.com');
     });
 
     it('Should set alertPrice', () => {
@@ -122,11 +146,15 @@ describe('reducer', () => {
         let state = {
             phoneNumber: '12345321',
             showModal: true,
+            contactType: 'phoneNumber',
+            email: 'test@test.com'
         };
         let res = { phoneNumber: 1234561234, alert: { price: 17000, isFlagged: false, created: 1234321 } };
         state = reducer(state, createAlertSuccess(res));
         expect(window.confirm).toBeTruthy();
         expect(state.phoneNumber).toEqual('');
         expect(state.showModal).toEqual(false);
+        expect(state.contactType).toEqual(undefined);
+        expect(state.email).toEqual('');
     });
 });
