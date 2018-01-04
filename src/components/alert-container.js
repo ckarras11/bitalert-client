@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
     return {
-        alerts: state.alerts,
-        serverMessage: state.serverMessage,
+        alerts: state.reducer.alerts,
+        serverMessage: state.reducer.serverMessage,
     };
 }
 
