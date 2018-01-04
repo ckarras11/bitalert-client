@@ -83,6 +83,8 @@ const reducer = (state = initialState, action) => {
     if (action.type === SET_CONTACT_TYPE) {
         state = Object.assign({}, state, {
             contactType: action.contactType,
+            alerts: [],
+            serverMessage: undefined
         });
         return state;
     }
