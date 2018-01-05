@@ -44,10 +44,10 @@ export class AlertForm extends React.Component {
             inputType = <div className='input-container'>
                 <label>Email:</label>
                 <Field
-                    name="email"
+                    name='email'
                     component='input'
-                    type="email"
-                    label="Email"
+                    type='email'
+                    label='Email'
                     onChange={e => this.setEmail(e)}
                     placeholder='bit@alert.com'
                 />
@@ -57,10 +57,10 @@ export class AlertForm extends React.Component {
             inputType = <div className='input-container'>
                 <label>Phone Number:</label>
                 <Field
-                    name="phoneNumber"
-                    type="tel"
+                    name='phoneNumber'
+                    type='tel'
                     component='input'
-                    label="Phone Number"
+                    label='Phone Number'
                     value={this.props.phoneNumber}
                     onChange={e => this.setNumber(e)}
                     placeholder='(999)-999-9999'
@@ -76,10 +76,10 @@ export class AlertForm extends React.Component {
                         <label>
                             <Field
                                 className='radio'
-                                name="contact"
+                                name='contact'
                                 component='input'
-                                type="radio"
-                                value="phoneNumber"
+                                type='radio'
+                                value='phoneNumber'
                                 onChange={e => this.handleSelect(e)}
                             />
                             Phone Number
@@ -87,10 +87,10 @@ export class AlertForm extends React.Component {
                         <label>
                             <Field
                                 className='radio'
-                                name="contact"
+                                name='contact'
                                 component='input'
-                                type="radio"
-                                value="email"
+                                type='radio'
+                                value='email'
                                 onChange={e => this.handleSelect(e)}
                             />
                             Email
