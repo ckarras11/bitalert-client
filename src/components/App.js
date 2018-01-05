@@ -11,8 +11,8 @@ import Loader from './loader';
 
 function mapStateToProps(state) {
   return {
-    showModal: state.showModal,
-    isLoading: state.isLoading,
+    showModal: state.reducer.showModal,
+    isLoading: state.reducer.isLoading,
   };
 }
 

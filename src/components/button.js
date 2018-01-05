@@ -4,7 +4,7 @@ import { toggleModal } from '../actions';
 import './button.css';
 
 const mapStateToProps = state => ({
-    isLoading: state.isLoading,
+    isLoading: state.reducer.isLoading,
 });
 
 export class Button extends React.Component {

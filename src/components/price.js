@@ -7,7 +7,7 @@ import './price.css';
 
 function mapStateToProps(state) {
     return {
-        priceHistory: state.priceHistory,
+        priceHistory: state.reducer.priceHistory,
     };
 }
 

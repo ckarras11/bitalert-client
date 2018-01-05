@@ -6,8 +6,8 @@ import { setAlertPrice } from '../actions'
 
 function mapStateToProps(state) {
   return {
-    priceHistory: state.priceHistory,
-    alertPrice: state.alertPrice
+    priceHistory: state.reducer.priceHistory,
+    alertPrice: state.reducer.alertPrice
   };
 }
 

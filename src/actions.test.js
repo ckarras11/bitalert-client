@@ -19,12 +19,17 @@ import {
     fetchAlertEmpty,
     SET_PHONENUMBER,
     setPhonenumber,
+    SET_EMAIL,
+    setEmail,
     SET_ALERT_PRICE,
     setAlertPrice,
     createAlertSuccess,
     CREATE_ALERT_SUCCESS,
-    createAlert,
+    createPhoneAlert,
+    createEmailAlert,
     removeAlert,
+    setContactType,
+    SET_CONTACT_TYPE,
 }
     from './actions';
 
@@ -74,6 +79,22 @@ describe('setPhonenumber', () => {
         expect(action.phoneNumber).toEqual(phoneNumber);
     });
 });
+describe('setEmail', () => {
+    it('Should return the action', () => {
+        const email = 'bit@alert.com';
+        const action = setEmail(email);
+        expect(action.type).toEqual(SET_EMAIL);
+        expect(action.email).toEqual(email);
+    });
+});
+describe('setContactType', () => {
+    it('Should return the action', () => {
+        const contactType = 'phoneNumber';
+        const action = setContactType(contactType);
+        expect(action.type).toEqual(SET_CONTACT_TYPE);
+        expect(action.contactType).toEqual(contactType);
+    });
+});
 describe('setAlertPrice', () => {
     it('Should return the action', () => {
         const price = 17000;
@@ -90,12 +111,23 @@ describe('createAlertSuccess', () => {
         expect(action.res).toEqual(alert);
     });
 });
-describe('createAlert', () => {
+describe('createPhoneAlert', () => {
     it('Should return the action', () => {
-        const alert = { phoneNumber: 1234561234, alert: { removeFlag: false, created: 123431241, price: 17000 } };
+        const alert = { phoneNumber: 1234561234, alert: { removeFlag: false, contactType: 'phoneNumber', created: 123431241, price: 17000 } };
         fetchMock.postOnce(`${API_BASE_URL}/api/alerts`, { body: alert });
         const store = mockStore({});
-        return store.dispatch(actions.createAlert(alert.phoneNumber, alert.alert.price)).then(() => {
+        return store.dispatch(actions.createPhoneAlert(alert.phoneNumber, alert.alert.price)).then(() => {
+            const action = store.getActions()[0];
+            expect(action.type).toEqual(CREATE_ALERT_SUCCESS);
+        });
+    });
+});
+describe('createEmailAlert', () => {
+    it('Should return the action', () => {
+        const alert = { email: 'test@test.com', alert: { removeFlag: false, contactType: 'email', created: 123431241, price: 17000 } };
+        fetchMock.postOnce(`${API_BASE_URL}/api/alerts`, { body: alert });
+        const store = mockStore({});
+        return store.dispatch(actions.createEmailAlert(alert.phoneNumber, alert.alert.price)).then(() => {
             const action = store.getActions()[0];
             expect(action.type).toEqual(CREATE_ALERT_SUCCESS);
         });

@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
     return {
-        alerts: state.alerts,
-        serverMessage: state.serverMessage,
+        alerts: state.reducer.alerts,
+        serverMessage: state.reducer.serverMessage,
     };
 }
 
@@ -18,7 +18,14 @@ export class AlertContainer extends React.Component {
             message = <h1 className='error-msg'>{this.props.serverMessage}</h1>;
         }
         const userAlerts = this.props.alerts.map((alert, index) => {
-            return <li key={index}><Alert number={alert.phoneNumber} price={alert.alert.price} alertId={alert.id} /></li>;
+            return <li key={index}>
+                <Alert
+                    number={alert.phoneNumber}
+                    email={alert.email}
+                    price={alert.alert.price}
+                    alertId={alert.id}
+                />
+            </li>;
         });
         return (
             <div className='alert-container'>
