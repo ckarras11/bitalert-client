@@ -1,5 +1,5 @@
 # BitAlert
-
+[![Build Status](https://travis-ci.org/ckarras11/bitalert-client.svg?branch=master)](https://travis-ci.org/ckarras11/bitalert-client)
 ## Overview
 BitAlert was created to help users keep an eye on the current market price.  With the massive increase of intrest in cryptocurrencies there has been an increase in volatility.  Changing in value thousands of dollars at a time.  It is difficult to watch the price and know when to buy or sell.  That where Bitalert comes in.  The app allows you to set alerts for the day and be notified via SMS the minute the market price becomes lower than your alert price.  Users also have the ability to remove unwanted alerts.  The server side code is located in this [repo.](https://github.com/ckarras11/bitalert-server) and the direct link for the app is [here!](https://bitalert.netlify.com/)
 
