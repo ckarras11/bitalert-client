@@ -9,3 +9,11 @@
   font-family: 'Quattrocento Sans', sans-serif;
 }
 
+.weather {
+  background-color: crimson;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid crimson 1px;
+  color: white;
+  margin-bottom: 20px;
+}
