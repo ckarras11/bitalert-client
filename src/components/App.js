@@ -31,7 +31,7 @@ export function App(props) {
     <section className='App'>
       {modal}
       <Logo />
-      <h1 className='weather'>Due to weather conditions this service may be temporarily unavailable</h1>
+      {/* <h1 className='weather'>Due to weather conditions this service may be temporarily unavailable</h1> */}
       <Price />
       {chart}
       <Button buttonMessage="Set New Alert" buttonType="info" />
