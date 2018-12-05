@@ -21,7 +21,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "REACT_APP_API_BASE_URL='http://157.230.2.215:8080/:8080' react-scripts build",
+		"build": "REACT_APP_API_BASE_URL='https://bitalert-server.herokuapp.com' react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
 	},
