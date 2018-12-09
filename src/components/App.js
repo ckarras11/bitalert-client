@@ -10,35 +10,38 @@ import Chart from './chart';
 import Loader from './loader';
 
 function mapStateToProps(state) {
-  return {
-    showModal: state.reducer.showModal,
-    isLoading: state.reducer.isLoading,
-  };
+	return {
+		showModal: state.reducer.showModal,
+		isLoading: state.reducer.isLoading
+	};
 }
 
 export function App(props) {
-  let modal;
-  let chart;
-  if (props.showModal) {
-    modal = <Modal />;
-  }
-  if (props.isLoading) {
-    chart = <Loader />;
-  } else if (props.isLoading === false) {
-    chart = <Chart />;
-  }
-  return (
-    <section className='App'>
-      {modal}
-      <Logo />
-      {/* <h1 className='weather'>Due to weather conditions this service may be temporarily unavailable</h1> */}
-      <Price />
-      {chart}
-      <Button buttonMessage="Set New Alert" buttonType="info" />
-      <Button buttonMessage="Edit Alerts" buttonType="danger" />
-      <Footer />
-    </section>
-  );
+	let modal;
+	let chart;
+	if (props.showModal) {
+		modal = <Modal />;
+	}
+	if (props.isLoading) {
+		chart = <Loader />;
+	} else if (props.isLoading === false) {
+		chart = <Chart />;
+	}
+	return (
+		<section className="App">
+			{modal}
+			<Logo />
+			{/* <h1 className='weather'>Due to weather conditions this service may be temporarily unavailable</h1> */}
+			<h1 className="weather">
+				Currently unavailable, Check back later for updates
+			</h1>
+			<Price />
+			{chart}
+			<Button buttonMessage="Set New Alert" buttonType="info" />
+			<Button buttonMessage="Edit Alerts" buttonType="danger" />
+			<Footer />
+		</section>
+	);
 }
 
 export default connect(mapStateToProps)(App);
