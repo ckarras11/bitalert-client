@@ -32,9 +32,10 @@ export function App(props) {
 			{modal}
 			<Logo />
 			{/* <h1 className='weather'>Due to weather conditions this service may be temporarily unavailable</h1> */}
-			{/* <h1 className="weather">
-				Currently unavailable, Check back later for updates
-			</h1> */}
+			<h1 className="weather">
+				The mail server has been take offline. There will no longer be alerts
+				received via email or SMS
+			</h1>
 			<Price />
 			{chart}
 			<Button buttonMessage="Set New Alert" buttonType="info" />
